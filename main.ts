@@ -16,7 +16,7 @@ serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
             `)
     } else if (command == "sensitivity") {
         if (commandParts.length > 1) {
-            sensitivity = parseInt(commandParts[1])
+            sensitivity = parseFloat(commandParts[1])
         }
     } else {
         basic.showString(command)
