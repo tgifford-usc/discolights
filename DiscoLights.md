@@ -23,7 +23,7 @@ basic.showLeds(`
 
 ## Step 2
 
-Get an ``||led:set brightness||`` block (you might need to click on "... more" to see it) 
+Get an ``||led:set brightness||`` block (you might need to click on more to see it) 
 and place it in the ``||forever||`` block.
 
 Get an ``||input:soundlevel||`` block and place it in the value slot of ``||led:set brightness||``. 
