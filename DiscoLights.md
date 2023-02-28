@@ -6,7 +6,7 @@ It is based on the existing example project https://microbit.org/projects/make-i
 We will extend this example to allow the style of the disco lights to be controlled from and external web interface.
 We will also control the sensitivity of the audio sensor
 
-## Step 1: Showing Lights
+## Step 2: Showing Lights
 
 Get a ``||basic:show leds||`` block and place it in the ``||on start||``. 
 Select all of the LEDS by dragging the mouse across them
@@ -21,7 +21,7 @@ basic.showLeds(`
     `)
 ```
 
-## Step 2: Reacting to Sound
+## Step 3: Reacting to Sound
 
 Get an ``||led:set brightness||`` block (you might need to click on "... more" to see it) 
 and place it in the ``||forever||`` block.
@@ -41,7 +41,7 @@ basic.forever(function () {
 })
 ```
 
-## Step 3: Adjust sensitivity
+## Step 4: Adjust sensitivity
 
 Add a variable called sensitivity by clicking on ``||Variables:Make a Variable||``.
 At the top of the ``||on start||`` block put ``||Variables:set sensitivity to 255||``
@@ -68,7 +68,7 @@ basic.forever(function () {
 })
 ```
 
-## Step 4: Listen for serial messages over USB
+## Step 5: Listen for serial messages over USB
 Click on ``||Advanced||`` and grab a ``||Serial:serial on data received||`` 
 and select the ``||new line ( )||`` option.
 
@@ -100,7 +100,7 @@ basic.forever(function () {
 })
 ```
 
-## Step 4: Split the line of serial data into commands
+## Step 6: Split the line of serial data into commands
 We will create a simple command language for controlling the Disco Lights.
 The microbit will listen for the commands "heart", "diamond" and "square".
 When it receives one of these commands it will change the shape of the lights to match.
@@ -138,7 +138,7 @@ basic.forever(function () {
 
 ```
 
-## Step 5: Extract the command itself
+## Step 7: Extract the command itself
 Now every time a line of characters is received over the serial port connection
 (i.e. over the USB cable) the program will split the line into parts, and store those
 parts in ``||Variables:commandParts||``. This variable is an Array. 
@@ -182,10 +182,13 @@ basic.forever(function () {
 ```
 
 
-## Step 6: Obey the command
+## Step 8: Obey the command
 Depending on which command is received, we take different actions. So we want an
 if/else block. Grab a ``||Logic:if then||`` block, and replace "true" with the comparison block
-``||Variables:command||`` = "heart".
+``||Variables:command||`` = "heart". NOTE: make sure you grab a comparison block that has double 
+quote marks in the empty slots, rather than the number 0.  This is because we want to compare the
+variable to a string like "heart" rather than to a number like 0.
+ 
 In the empty slot in the if/else block put ``||Basic:show icon||`` and select a heart shaped icon.
 
 Click on the + sign to add another "else if" slot to the if/else block. 
@@ -230,7 +233,7 @@ basic.forever(function () {
 })
 ```
 
-## Step 7: Don't forget the sensitivity command
+## Step 9: Don't forget the sensitivity command
 We need to add an extra clause into our if/else conditional block, to take care of the
 sensitivity command.
 
@@ -296,7 +299,7 @@ basic.forever(function () {
 ```
 
 
-## Step 8: Unexpected commands
+## Step 10: Unexpected commands
 We are listening for four particular commands: "heart", "diamond",  "square", "sensitivity".
 What if we receive an unexpected command, not in this list. At the moment the program will
 just ignore it. But it might be helpful to alert ourselves in this case. This way if the code
@@ -349,7 +352,7 @@ basic.forever(function () {
 })
 ```
 
-## Step 9:  That's it!
+## Step 11:  That's it!
 The microbit project is now ready.  Download it onto your microbit.
 However, in order to actually see it in action, you will need a web interface that sends these
 commands to the microbit.
