@@ -352,12 +352,19 @@ basic.forever(function () {
 })
 ```
 
-## Step 11:  That's it!
+## Step 11: Change the rate of serial communication
+The last thing to do is to change the rate at which the microbit sends and receives serial messages.
+The default rate is too high, and can be unreliable. We want to change what is called the 'baud' rate
+to 9600. Click on ``||advanced||`` and then in the ||serial|| area click on 'more' and grab a ``||serial:serial set baud rate||``.
+Drag it into ``||basic:on start||``. Then set the value to 9600.
+
+
+## Step 12:  That's it!
 The microbit project is now ready.  Download it onto your microbit.
 However, in order to actually see it in action, you will need a web interface that sends these
 commands to the microbit.
 An example web interface for doing this is available 
-https://github.com/dr-offig/DES221_2023/releases/tag/1.0.0
+https://github.com/tgifford-usc/DES221_2024/archive/refs/tags/1.6.0.zip
 Download the zip file, extract it, and open index.html in Google Chrome. Read the README.md
 file for instructions on how to use this web interface.  Note that it has only been tested to work
 in Google Chrome.  It uses the WebSerial API to communicate with the microbit, and not
