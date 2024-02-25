@@ -26,6 +26,7 @@ let command = ""
 let commandParts: string[] = []
 let serialLineReceived = ""
 let sensitivity = 0
+serial.setBaudRate(BaudRate.BaudRate9600)
 sensitivity = 255
 basic.showLeds(`
     # # # # #
