@@ -358,6 +358,48 @@ The default rate is too high, and can be unreliable. We want to change what is c
 to 9600. Click on ``||advanced||`` and then in the ||serial|| area click on 'more' and grab a ``||serial:serial set baud rate||``.
 Drag it into ``||basic:on start||``. Then set the value to 9600.
 
+```blocks
+serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+    serialLineReceived = serial.readUntil(serial.delimiters(Delimiters.NewLine))
+    commandParts = serialLineReceived.split(" ")
+    command = commandParts[0]
+    if (command == "heart") {
+        basic.showIcon(IconNames.Heart)
+    } else if (command == "diamond") {
+        basic.showIcon(IconNames.Diamond)
+    } else if (command == "square") {
+        basic.showLeds(`
+            # # # # #
+            # # # # #
+            # # # # #
+            # # # # #
+            # # # # #
+            `)
+    } else if (command == "sensitivity") {
+        if (commandParts.length > 1) {
+            sensitivity = parseFloat(commandParts[1])
+        }
+    } else {
+        basic.showString(command)
+    }
+})
+let command = ""
+let commandParts: string[] = []
+let serialLineReceived = ""
+let sensitivity = 0
+sensitivity = 255
+serial.setBaudRate(BaudRate.BaudRate9600)
+basic.showLeds(`
+    # # # # #
+    # # # # #
+    # # # # #
+    # # # # #
+    # # # # #
+    `)
+basic.forever(function () {
+    led.setBrightness(input.soundLevel() * (sensitivity / 255))
+})
+```
 
 ## Step 12:  That's it!
 The microbit project is now ready.  Download it onto your microbit.
