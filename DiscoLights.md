@@ -407,7 +407,7 @@ The microbit project is now ready.  Download it onto your microbit.
 However, in order to actually see it in action, you will need a web interface that sends these
 commands to the microbit.
 An example web interface for doing this is available 
-https://github.com/tgifford-usc/DES221_2024/archive/refs/tags/1.6.0.zip
+https://github.com/tgifford-usc/DES221_2024/archive/refs/tags/1.7.0.zip
 Download the zip file, extract it, and open index.html in Google Chrome. Read the README.md
 file for instructions on how to use this web interface.  Note that it has only been tested to work
 in Google Chrome.  It uses the WebSerial API to communicate with the microbit, and not
